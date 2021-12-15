@@ -27,8 +27,7 @@
 
 	void Client::addProduct(Produit produit)
 	{
-		if(produit.getQuantite() != 0)
-			_panier.push_back(produit);
+		_panier.push_back(produit);
 	}
 
 	void Client::clearPanier()
@@ -40,7 +39,7 @@
 	{
 	for (int i = 0; i < _panier.size(); i++)
 		{
-			if (produit.getTitre() == _panier[i].getTitre() == 0)
+			if (produit.getTitre() == _panier[i].getTitre())
 				_panier.erase(_panier.begin() + i);
 		}
 	}
@@ -49,11 +48,6 @@
 	void Client::changeQuantity(Produit produit, int quantity)
 	{
 		int count = getQuantity(produit);
-		// for (int i = 0; i < _panier.size(); i++)
-		// {
-		// 	if (produit.getTitre() == _panier[i].getTitre() == 0)
-		// 		count++;
-		// }
 		if (count < quantity)
 		{
 			for (int i = 0; i < quantity - count; i++)

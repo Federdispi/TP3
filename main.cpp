@@ -5,29 +5,40 @@
 
 int main()
 {
-	Produit ps5("PS5", "Meilleure console de jeu", 0, 499.99);
-	Produit ps4("PS4", "Console de jeu", 1, 199.99);
 	Magasin magasin;
+
+	std::string prenom, nom, identifiant;
+	std::cout << "Quel est votre prenom, votre nom et votre identifiant ?" << std::endl;
+	std::cin >> prenom;
+	std::cout << std::endl;
+	std::cin >> nom;
+	std::cout << std::endl;
+	std::cin >> identifiant;
+	Client client1(prenom, nom, identifiant);
+
+	Produit ps5("PS5", "Meilleure console de jeu", 1, 499.99);
+	Produit ps4("PS4", "Console de jeu", 1, 199.99);
+
+	magasin.addClient(&client1);
 	magasin.addProduit(&ps5);
-	magasin.showByName("PS5");
+	magasin.addProduit(&ps4);
 	magasin.updateQuantity("PS5");
 	magasin.showAll();
-	std::cout<<ps5;
 
-	std::string _prenom;
-	std::string _nom;
-	std::string _identifiant;
+	magasin.addToCart(&client1, &ps5);
+	magasin.addToCart(&client1, &ps4);
+	magasin.showClientById(identifiant);
+
 	std::cout << "Quel est votre prenom, votre nom et votre identifiant ?" << std::endl;
-	std::cin >> _prenom;
+	std::cin >> prenom;
 	std::cout << std::endl;
-	std::cin >> _nom;
+	std::cin >> nom;
 	std::cout << std::endl;
-	std::cin >> _identifiant;
-	
+	std::cin >> identifiant;
+	Client client2(prenom, nom, identifiant);
 
-	Client client1(_prenom, _nom, _identifiant);
-	client1.addProduct(ps5);
-	client1.addProduct(ps4);
-	ps5.setQuantite(ps5.getQuantite()-1);
-	std::cout << client1 << std::endl;
+	magasin.addClient(&client2);
+	magasin.addToCart(&client2, &ps5);
+	magasin.removeFromCart(&client1, &ps5);
+	magasin.showAllClients();
 }
