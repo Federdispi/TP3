@@ -7,7 +7,7 @@
 class Produit {
 public:
 	Produit(std::string titre, std::string descritpion, int quantite, float prix);
-	std::string getTitre();
+	std::string getTitre() const;
 	std::string getDescription();
 	int getQuantite();
 	float getPrix();

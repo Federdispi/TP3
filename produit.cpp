@@ -3,7 +3,7 @@ Produit::Produit(std::string titre, std::string description, int quantite, float
 	:_titre(titre), _description(description), _quantite(quantite), _prix(prix) 
 {}
 
-std::string Produit::getTitre()
+std::string Produit::getTitre() const
 {
 	return _titre;
 }

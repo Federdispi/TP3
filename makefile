@@ -1,13 +1,13 @@
 # Generic Makefile with automatic dependencies management
 
 # Choose your compiler g++/clang++
-CXX        = g++
+CXX        = g++-7
 CXXFLAGS   = -Wall -Wextra -std=c++11
 DEPFLAGS   = -MMD
 LDFLAGS    = 
 # Replace your_files.cpp with the list of cpp files that need to be compiled
 # Ex: file1.cpp file2.cpp file3.cpp
-SRCS       = magasin.cpp main.cpp produit.cpp
+SRCS       = magasin.cpp main.cpp produit.cpp client.cpp
 OBJS       = $(SRCS:.cpp=.o)
 # Replace your_app with the name you want to give to your executable file
 TARGET     = Magasin-test 
