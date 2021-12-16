@@ -40,7 +40,7 @@
 	{
 	for (int i = 0; i < _panier.size(); i++)
 		{
-			if (produit.getTitre() == _panier[i].getTitre() == 0)
+			if (produit.getTitre() == _panier[i].getTitre())
 				_panier.erase(_panier.begin() + i);
 		}
 	}
@@ -77,10 +77,15 @@
 		return count;
 	}
 
+	std::vector<Produit> Client::getPanier()
+	{
+		return _panier;
+	}
+
 
 	std::ostream& operator<<(std::ostream& os, const Client& client)
 	{
-	os << client._prenom << " " << client._nom << std::endl << "Id : " << client._identifiant << std::endl << std::endl;
+	os << client._prenom << " " << client._nom << std::endl << "Id : " << client._identifiant << std::endl << std::endl << "Panier :" << std::endl;
 	for(int i = 0; i < client._panier.size(); i++)
 	{
 		os << client._panier[i].getTitre() << " " << client.getQuantity(client._panier[i]) << std::endl;
