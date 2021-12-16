@@ -17,6 +17,7 @@ public:
 	void eraseProduct(Produit produit);
 	friend std::ostream& operator<<(std::ostream& os, const Client& client);
 	int getQuantity(Produit produit) const;
+	std::vector<Produit> getPanier();
 private: 
 	std::string _prenom;
 	std::string _nom;
