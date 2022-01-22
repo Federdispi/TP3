@@ -27,15 +27,19 @@
 
 	void Client::addProduct(Produit produit)
 	{
-		_panier.push_back(produit);
+		if (produit.getQuantite() != 0) //Si la quantité est non nulle
+	{
+		_panier.push_back(produit); //Ajout d'un produit au panier
+	}else
+		std::cout << "ERREUR: L'article " << produit.getTitre() << " est en rupture de stock" << std::endl << std::endl;
 	}
 
-	void Client::clearPanier()
+	void Client::clearPanier() //Vider le panier
 	{
 		_panier.clear();
 	}
 
-	void Client::eraseProduct(Produit produit)
+	void Client::eraseProduct(Produit produit) //Effacer un produit du panier
 	{
 	for (int i = 0; i < _panier.size(); i++)
 		{
@@ -45,7 +49,7 @@
 	}
 
 
-	void Client::changeQuantity(Produit produit, int quantity)
+	void Client::changeQuantity(Produit produit, int quantity) //Changer la quantité d'un produit
 	{
 		int count = getQuantity(produit);
 		if (count < quantity)
@@ -60,7 +64,7 @@
 		}
 	}
 
-	int Client::getQuantity(Produit produit) const
+	int Client::getQuantity(Produit produit) const //Obtenir la quantité
 	{
 		int count = 0;
 		for (int i = 0; i < _panier.size(); i++)
@@ -71,13 +75,13 @@
 		return count;
 	}
 
-	std::vector<Produit> Client::getPanier()
+	std::vector<Produit> Client::getPanier() //Obtenir le panier
 	{
 		return _panier;
 	}
 
 
-	std::ostream& operator<<(std::ostream& os, const Client& client)
+	std::ostream& operator<<(std::ostream& os, const Client& client) //Surcharge de l'opérateur <<
 	{
 	os << client._prenom << " " << client._nom << std::endl << "Id : " << client._identifiant << std::endl << std::endl << "Panier :" << std::endl;
 	for(int i = 0; i < client._panier.size(); i++)
@@ -86,4 +90,3 @@
 	}
 	return os;
 	}
-

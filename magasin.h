@@ -5,6 +5,8 @@
 #include <iostream>
 #include "produit.h"
 #include "client.h"
+#include "commande.h"
+#include <string.h>
 
 class Magasin {
 public:
@@ -21,10 +23,15 @@ public:
 	void addToCart(Client* client, Produit* produit);
 	void removeFromCart(Client* client, Produit* produit);
 	void updateQuantityInCart(Client* client, Produit produit, int quantity);
+	int validOrder(Client* client);
+	void updateStatut(Commande* commande);
+	void passedOrder();
+	void clientOrder(Client client, std::vector<std::string> IdClient);
+	friend std::ostream& operator<<(std::ostream& os, const Magasin& magasin);
 private: 
 	std::vector<Produit*> _produits;
 	std::vector<Client*> _clients;
-	//std::vector<Commande> _commandes;
+	std::vector<Commande> _commandes;
 };
 
 #endif
